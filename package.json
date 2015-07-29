@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "author": "Yui Wei",
   "dependencies": {
+    "csvtojson": "^0.4.1",
     "express": "^4.10.2",
     "forecast": "^0.2.1",
     "hashids": "^1.0.1",

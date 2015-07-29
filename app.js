@@ -1,4 +1,3 @@
-
 /***************************************HASH*************************************************/
 var stringHash = require('string-hash');
 var Hashids = require('hashids');

@@ -1,5 +1,6 @@
 //communication with phone
 var weather = require('./weather');
+var emissions = require('./emissions');
 var helper = require('./helper');
 var a = require('./app');
 var Q = require('q');
@@ -19,6 +20,7 @@ io.on('connection', function(socket){
     socket.on('disconnect', function(){
         console.log('user disconnected');
     });
+    
     socket.on('forecast', function(msg){
         var latlng = msg.split('_');
         var userLoc = { "latitude": latlng[0]*1, "longitude": latlng[1]*1 };
@@ -27,6 +29,14 @@ io.on('connection', function(socket){
             socket.emit('forecast_data', weather);
         });
     });
+    
+    socket.on('emissions', function(msg) {
+        emissions.getEmissions().done(function(emis) {
+            console.log(emis);
+            socket.emit('emissions_data', emis);
+        });
+    });
+              
 });
 
 http.listen(3000, function(){

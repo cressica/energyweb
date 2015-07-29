@@ -77,7 +77,7 @@ function forecastHelper(locationObj, timeVal) {
                        function(err,res,data) {
         
         
-        if (data.currently == null) {
+        if (data ==null || data.currently == null) {
             def.reject("No data available");
         }
         if(err) def.reject(err);
