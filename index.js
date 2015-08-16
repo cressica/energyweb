@@ -31,8 +31,9 @@ io.on('connection', function(socket){
     });
     
     socket.on('emissions', function(msg) {
-        emissions.getEmissions().done(function(emis) {
-            console.log(emis);
+        var user = msg;
+        emissions.getEmissions(user).done(function(emis) {
+            console.log("emissions sent");
             socket.emit('emissions_data', emis);
         });
     });
